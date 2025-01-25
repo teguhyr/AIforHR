@@ -72,7 +72,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="dashboard-title">🚀 HR Dashboard 2024 - Millennial Edition</h1>
+        <h1 class="dashboard-title">🚀 HR Dashboard 2024 </h1>
         
         <div class="card">
             <h2 class="card-title"><span class="emoji">📊</span>Recruitment</h2>
@@ -81,8 +81,52 @@
                 <canvas id="recruitmentChart"></canvas>
             </div>
         </div>
-
-        <!-- More cards for Development, Performance, etc. (similar structure) -->
+		
+		 <div class="card">
+            <h2 class="card-title"><span class="emoji">📊</span>Development</h2>
+            <!-- Metric divs here (similar to previous version) -->
+            <div class="chart-container">
+                <canvas id="developmentChart"></canvas>
+            </div>
+        </div>
+		
+				 <div class="card">
+            <h2 class="card-title"><span class="emoji">📊</span>Performance</h2>
+            <!-- Metric divs here (similar to previous version) -->
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+		
+		 </div>
+		
+				 <div class="card">
+            <h2 class="card-title"><span class="emoji">📊</span>Productivity</h2>
+            <!-- Metric divs here (similar to previous version) -->
+            <div class="chart-container">
+                <canvas id="productivityChart"></canvas>
+            </div>
+        </div>
+		
+		</div>
+		
+				 <div class="card">
+            <h2 class="card-title"><span class="emoji">📊</span>KPI</h2>
+            <!-- Metric divs here (similar to previous version) -->
+            <div class="chart-container">
+                <canvas id="kpiChart"></canvas>
+            </div>
+        </div>
+		
+			</div>
+		
+				 <div class="card">
+            <h2 class="card-title"><span class="emoji">📊</span>D&I</h2>
+            <!-- Metric divs here (similar to previous version) -->
+            <div class="chart-container">
+                <canvas id="diversityChart"></canvas>
+            </div>
+        </div>
 
     </div>
 
@@ -174,7 +218,7 @@
         createChart('recruitmentChart', months, 
             [200, 250, 300, 280, 320, 350, 400, 380, 420, 450, 400, 350], 
             'Aplikasi per Bulan');
-
+			
         // Development Chart
         createChart('developmentChart', months, 
             [1000, 1200, 1500, 1300, 1400, 1600, 1800, 1700, 1900, 2000, 1800, 1700], 
@@ -251,218 +295,21 @@
                 loop: true
             });
         });
+		
+				
     </script>
-</body>
-  
+	</body>
+ 
 </html>
-// Tambahkan ini di bagian akhir script
-function addDataFilter() {
-    const filterSelect = document.createElement('select');
-    filterSelect.id = 'dataFilter';
-    filterSelect.innerHTML = `
-        <option value="all">Semua Data</option>
-        <option value="thisMonth">Bulan Ini</option>
-        <option value="lastQuarter">Kuartal Terakhir</option>
-        <option value="thisYear">Tahun Ini</option>
-    `;
-    document.querySelector('.container').prepend(filterSelect);
 
-    filterSelect.addEventListener('change', function() {
-        // Di sini Anda bisa menambahkan logika untuk memfilter data berdasarkan pilihan
-        console.log('Filter changed to:', this.value);
-        // Update charts berdasarkan filter
-    });
-}
 
-addDataFilter();
+	
+	
+	
 
-// Tambahkan ini di bagian akhir script
-function addDarkModeToggle() {
-    const toggle = document.createElement('button');
-    toggle.textContent = '🌙';
-    toggle.style.position = 'fixed';
-    toggle.style.top = '20px';
-    toggle.style.right = '20px';
-    toggle.style.fontSize = '24px';
-    toggle.style.background = 'none';
-    toggle.style.border = 'none';
-    toggle.style.cursor = 'pointer';
-    document.body.appendChild(toggle);
-
-    toggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-}
-
-addDarkModeToggle();
-
-// Tambahkan style untuk dark mode
-const style = document.createElement('style');
-style.textContent = `
-    body.dark-mode {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-    }
-    body.dark-mode .card {
-        background-color: #34495e;
-        color: #ecf0f1;
-    }
-    body.dark-mode .card-title {
-        color: #3498db;
-    }
-    body.dark-mode .metric-value {
-        color: #e74c3c;
-    }
-`;
-document.head.appendChild(style);
-.
-
-// Tambahkan ini di bagian akhir script
-function simulateNotifications() {
-    const notifications = [
-        "🎉 Baru saja: 5 kandidat baru melamar untuk posisi Developer!",
-        "📈 Update: Skor kinerja tim meningkat 10% bulan ini!",
-        "🏆 Pencapaian: Tim HR berhasil menyelesaikan target perekrutan Q2!",
-        "📊 Tren: Kepuasan karyawan meningkat 5% dibanding bulan lalu!"
-    ];
-
-    function showNotification() {
-        const notification = notifications[Math.floor(Math.random() * notifications.length)];
-        const notifElement = document.createElement('div');
-        notifElement.textContent = notification;
-        notifElement.style.position = 'fixed';
-        notifElement.style.right = '20px';
-        notifElement.style.backgroundColor = '#3498db';
-        notifElement.style.color = 'white';
-        notifElement.style.padding = '10px 20px';
-        notifElement.style.borderRadius = '5px';
-        notifElement.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
-        notifElement.style.zIndex = '1000';
-        notifElement.style.opacity = '0';
-        notifElement.style.transform = 'translateY(20px)';
-        notifElement.style.transition = 'all 0.3s ease-out';
-        
-        document.body.appendChild(notifElement);
-        
-        setTimeout(() => {
-            notifElement.style.opacity = '1';
-            notifElement.style.transform = 'translateY(0)';
-        }, 100);
-
-        setTimeout(() => {
-            notifElement.style.opacity = '0';
-            notifElement.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                document.body.removeChild(notifElement);
-            }, 300);
-        }, 5000);
-    }
-
-    setInterval(showNotification, 15000); // Menampilkan notifikasi setiap 15 detik
-}
-
-simulateNotifications();
-
-// Tambahkan ini di bagian akhir script
-function addSearchFeature() {
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = '🔍 Cari metrik atau data...';
-    searchInput.style.padding = '10px';
-    searchInput.style.margin = '20px 0';
-    searchInput.style.width = '100%';
-    searchInput.style.borderRadius = '5px';
-    searchInput.style.border = '1px solid #ccc';
-
-    document.querySelector('.container').prepend(searchInput);
-
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        document.querySelectorAll('.card').forEach(card => {
-            const cardText = card.textContent.toLowerCase();
-            if (cardText.includes(searchTerm)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-}
-
-addSearchFeature();
-
-// Tambahkan ini di bagian akhir script
-function addLoadingAnimation() {
-    const loadingOverlay = document.createElement('div');
-    loadingOverlay.style.position = 'fixed';
-    loadingOverlay.style.top = '0';
-    loadingOverlay.style.left = '0';
-    loadingOverlay.style.width = '100%';
-    loadingOverlay.style.height = '100%';
-    loadingOverlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-    loadingOverlay.style.display = 'flex';
-    loadingOverlay.style.justifyContent = 'center';
-    loadingOverlay.style.alignItems = 'center';
-    loadingOverlay.style.zIndex = '9999';
-
-    const spinner = document.createElement('div');
-    spinner.style.border = '5px solid #f3f3f3';
-    spinner.style.borderTop = '5px solid #3498db';
-    spinner.style.borderRadius = '50%';
-    spinner.style.width = '50px';
-    spinner.style.height = '50px';
-    spinner.style.animation = 'spin 1s linear infinite';
-
-    loadingOverlay.appendChild(spinner);
-    document.body.appendChild(loadingOverlay);
-
-    const loadingOverlay = document.createElement('div');
-    loadingOverlay.style.position = 'fixed';
-    loadingOverlay.style.top = '0';
-    loadingOverlay.style.left = '0';
-    loadingOverlay.style.width = '100%';
-    loadingOverlay.style.height = '100%';
-    loadingOverlay.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-    loadingOverlay.style.display = 'flex';
-    loadingOverlay.style.justifyContent = 'center';
-    loadingOverlay.style.alignItems = 'center';
-    loadingOverlay.style.zIndex = '9999';
-
-    const spinner = document.createElement('div');
-    spinner.style.border = '5px solid #f3f3f3';
-    spinner.style.borderTop = '5px solid #3498db';
-    spinner.style.borderRadius = '50%';
-    spinner.style.width = '50px';
-    spinner.style.height = '50px';
-    spinner.style.animation = 'spin 1s linear infinite';
-
-    loadingOverlay.appendChild(spinner);
-    document.body.appendChild(loadingOverlay);
-
-    const hideLoading = () => {
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => {
-            document.body.removeChild(loadingOverlay);
-        }, 300);
-    };
-
-    window.addEventListener('load', () => {
-        setTimeout(hideLoading, 1500); // Menghilangkan loading setelah 1.5 detik
-    });
-
-    // Animasi untuk spinner
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-}
-
-addLoadingAnimation();
 
 
 
         
-
 
 
