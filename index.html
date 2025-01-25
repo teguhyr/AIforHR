@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Dashboard 2024 - Millennial</title>
+    <title>HR Dashboard 2024 - Millennial Edition</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
@@ -296,11 +296,152 @@
             });
         });
 		
-				
+		
+   function addDataFilter() {
+    const filterSelect = document.createElement('select');
+    filterSelect.id = 'dataFilter';
+    filterSelect.innerHTML = `
+        <option value="all">Semua Data</option>
+        <option value="thisMonth">Bulan Ini</option>
+        <option value="lastQuarter">Kuartal Terakhir</option>
+        <option value="thisYear">Tahun Ini</option>
+    `;
+    document.querySelector('.container').prepend(filterSelect);
+
+    filterSelect.addEventListener('change', function() {
+        // Di sini Anda bisa menambahkan logika untuk memfilter data berdasarkan pilihan
+        console.log('Filter changed to:', this.value);
+        // Update charts berdasarkan filter
+    });
+}
+
+addDataFilter();
+
+
+// Tambahkan DarkMode
+function addDarkModeToggle() {
+    const toggle = document.createElement('button');
+    toggle.textContent = '🌙';
+    toggle.style.position = 'fixed';
+    toggle.style.top = '20px';
+    toggle.style.right = '20px';
+    toggle.style.fontSize = '24px';
+    toggle.style.background = 'none';
+    toggle.style.border = 'none';
+    toggle.style.cursor = 'pointer';
+    document.body.appendChild(toggle);
+
+    toggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+}
+
+addDarkModeToggle();
+
+// Tambahkan style untuk dark mode
+const style = document.createElement('style');
+style.textContent = `
+    body.dark-mode {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+    }
+    body.dark-mode .card {
+        background-color: #34495e;
+        color: #ecf0f1;
+    }
+    body.dark-mode .card-title {
+        color: #3498db;
+    }
+    body.dark-mode .metric-value {
+        color: #e74c3c;
+    }
+`;
+document.head.appendChild(style);
+
+// Tambahkan Notifikasi
+function simulateNotifications() {
+    const notifications = [
+        "🎉 Baru saja: 5 kandidat baru melamar untuk posisi Developer!",
+        "📈 Update: Skor kinerja tim meningkat 10% bulan ini!",
+        "🏆 Pencapaian: Tim HR berhasil menyelesaikan target perekrutan Q2!",
+        "📊 Tren: Kepuasan karyawan meningkat 5% dibanding bulan lalu!"
+    ];
+
+    function showNotification() {
+        const notification = notifications[Math.floor(Math.random() * notifications.length)];
+        const notifElement = document.createElement('div');
+        notifElement.textContent = notification;
+        notifElement.style.position = 'fixed';
+        notifElement.style.bottom = '20px';
+	    notifElement.style.backgroundColor = '#3498db';
+        notifElement.style.color = 'white';
+        notifElement.style.padding = '10px 20px';
+        notifElement.style.borderRadius = '5px';
+        notifElement.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+        notifElement.style.zIndex = '1000';
+        notifElement.style.opacity = '0';
+        notifElement.style.transform = 'translateY(20px)';
+        notifElement.style.transition = 'all 0.3s ease-out';
+        
+        document.body.appendChild(notifElement);
+        
+        setTimeout(() => {
+            notifElement.style.opacity = '1';
+            notifElement.style.transform = 'translateY(0)';
+        }, 100);
+
+        setTimeout(() => {
+            notifElement.style.opacity = '0';
+            notifElement.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                document.body.removeChild(notifElement);
+            }, 300);
+        }, 5000);
+    }
+
+    setInterval(showNotification, 5000); // Menampilkan notifikasi setiap 5 detik
+}
+
+simulateNotifications();
+
+
+// Tambahkan Search
+function addSearchFeature() {
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = '🔍 Cari Data...';
+    searchInput.style.padding = '10px';
+    searchInput.style.margin = '20px 0';
+    searchInput.style.width = '100%';
+    searchInput.style.borderRadius = '5px';
+    searchInput.style.border = '1px solid #ccc';
+
+    document.querySelector('.container').prepend(searchInput);
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        document.querySelectorAll('.card').forEach(card => {
+            const cardText = card.textContent.toLowerCase();
+            if (cardText.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+}
+
+addSearchFeature();
+
+
+		
     </script>
 	</body>
  
 </html>
+
+
 
 
 	
