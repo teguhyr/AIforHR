@@ -39,6 +39,7 @@ Kontribusi selalu diterima dengan baik! Jika Anda memiliki ide untuk meningkatka
 Proyek ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
 
 ## Kontak
-Jika Anda memiliki pertanyaan atau saran, jangan ragu untuk menghubungi tim pengembang di [email@example.com].
+Jika Anda memiliki pertanyaan atau saran, jangan ragu untuk menghubungi tim pengembang di [teguhyr@gmail.com]
+(https://teguhyr.com/)
 
 Happy analyzing! 🚀
